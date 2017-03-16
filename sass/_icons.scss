@@ -1,0 +1,176 @@
+// http://jaydenseric.com/blog/font-icons-like-a-boss-with-sass-and-font-custom
+
+// Declare icon font
+@include font-face('icons', '#{$font-path}/icons');
+
+//
+// Icon Font: icons
+//
+
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icon-angle-down:before,
+.icon-angle-left:before,
+.icon-angle-right:before,
+.icon-angle-up:before,
+.icon-app-sample:before,
+.icon-bell:before,
+.icon-card-view:before,
+.icon-check:before,
+.icon-check-square-off:before,
+.icon-check-square-on:before,
+.icon-chevron-down:before,
+.icon-chevron-left:before,
+.icon-chevron-right:before,
+.icon-chevron-up:before,
+.icon-close:before,
+.icon-edit:before,
+.icon-error:before,
+.icon-home:before,
+.icon-info-circle:before,
+.icon-list-view:before,
+.icon-pages:before,
+.icon-palette:before,
+.icon-pattern:before,
+.icon-pause-circle:before,
+.icon-profile:before,
+.icon-radio-off:before,
+.icon-radio-on:before,
+.icon-save:before,
+.icon-search:before,
+.icon-trash:before,
+.icon-warning:before {
+  display: inline-block;
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.icon-angle-down:before { content: "\f100"; }
+.icon-angle-left:before { content: "\f101"; }
+.icon-angle-right:before { content: "\f102"; }
+.icon-angle-up:before { content: "\f103"; }
+.icon-app-sample:before { content: "\f104"; }
+.icon-bell:before { content: "\f105"; }
+.icon-card-view:before { content: "\f106"; }
+.icon-check:before { content: "\f107"; }
+.icon-check-square-off:before { content: "\f108"; }
+.icon-check-square-on:before { content: "\f109"; }
+.icon-chevron-down:before { content: "\f10a"; }
+.icon-chevron-left:before { content: "\f10b"; }
+.icon-chevron-right:before { content: "\f10c"; }
+.icon-chevron-up:before { content: "\f10d"; }
+.icon-close:before { content: "\f10e"; }
+.icon-edit:before { content: "\f10f"; }
+.icon-error:before { content: "\f110"; }
+.icon-home:before { content: "\f111"; }
+.icon-info-circle:before { content: "\f112"; }
+.icon-list-view:before { content: "\f113"; }
+.icon-pages:before { content: "\f114"; }
+.icon-palette:before { content: "\f115"; }
+.icon-pattern:before { content: "\f116"; }
+.icon-pause-circle:before { content: "\f117"; }
+.icon-profile:before { content: "\f118"; }
+.icon-radio-off:before { content: "\f119"; }
+.icon-radio-on:before { content: "\f11a"; }
+.icon-save:before { content: "\f11b"; }
+.icon-search:before { content: "\f11c"; }
+.icon-trash:before { content: "\f11d"; }
+.icon-warning:before { content: "\f11e"; }
+
+$font-icons-angle-down: "\f100";
+$font-icons-angle-left: "\f101";
+$font-icons-angle-right: "\f102";
+$font-icons-angle-up: "\f103";
+$font-icons-app-sample: "\f104";
+$font-icons-bell: "\f105";
+$font-icons-card-view: "\f106";
+$font-icons-check: "\f107";
+$font-icons-check-square-off: "\f108";
+$font-icons-check-square-on: "\f109";
+$font-icons-chevron-down: "\f10a";
+$font-icons-chevron-left: "\f10b";
+$font-icons-chevron-right: "\f10c";
+$font-icons-chevron-up: "\f10d";
+$font-icons-close: "\f10e";
+$font-icons-edit: "\f10f";
+$font-icons-error: "\f110";
+$font-icons-home: "\f111";
+$font-icons-info-circle: "\f112";
+$font-icons-list-view: "\f113";
+$font-icons-pages: "\f114";
+$font-icons-palette: "\f115";
+$font-icons-pattern: "\f116";
+$font-icons-pause-circle: "\f117";
+$font-icons-profile: "\f118";
+$font-icons-radio-off: "\f119";
+$font-icons-radio-on: "\f11a";
+$font-icons-save: "\f11b";
+$font-icons-search: "\f11c";
+$font-icons-trash: "\f11d";
+$font-icons-warning: "\f11e";
+
+// List icons
+$icons: (
+    angle-down: "\f100",
+    angle-left: "\f101",
+    angle-right: "\f102",
+    angle-up: "\f103",
+    app-sample: "\f104",
+    bell: "\f105",
+    card-view: "\f106",
+    check: "\f107",
+    check-square-off: "\f108",
+    check-square-on: "\f109",
+    chevron-down: "\f10a",
+    chevron-left: "\f10b",
+    chevron-right: "\f10c",
+    chevron-up: "\f10d",
+    close: "\f10e",
+    edit: "\f10f",
+    error: "\f110",
+    home: "\f111",
+    info-circle: "\f112",
+    list-view: "\f113",
+    pages: "\f114",
+    palette: "\f115",
+    pattern: "\f116",
+    pause-circle: "\f117",
+    profile: "\f118",
+    radio-off: "\f119",
+    radio-on: "\f11a",
+    save: "\f11b",
+    search: "\f11c",
+    trash: "\f11d",
+    warning: "\f11e",
+);
+
+// Use to apply icons
+@mixin icon($position: before, $icon: false, $styles: true) {
+    @if $position == both {
+        $position: 'before, &:after';
+    }
+    &:#{$position} {
+        @if $icon {
+            content: "#{map-get($icons, $icon)}";
+        }
+        @if $styles {
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-family: 'icons';
+        }
+        @content;
+    }
+}
+
